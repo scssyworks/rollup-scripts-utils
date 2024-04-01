@@ -24,11 +24,7 @@
     "type": "git",
     "url": "git+https://github.com/scssyworks/rollup-scripts-utils.git"
   },
-  "keywords": [
-    "rollup",
-    "scripts",
-    "utils"
-  ],
+  "keywords": ["rollup", "scripts", "utils"],
   "bugs": {
     "url": "https://github.com/scssyworks/rollup-scripts-utils/issues"
   },
