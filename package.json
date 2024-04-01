@@ -1,6 +1,6 @@
 {
   "name": "rollup-scripts-utils",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Utils for rollup-scripts and rollup-boilerplate",
   "main": "index.js",
   "files": [
@@ -24,7 +24,11 @@
     "type": "git",
     "url": "git+https://github.com/scssyworks/rollup-scripts-utils.git"
   },
-  "keywords": ["rollup", "scripts", "utils"],
+  "keywords": [
+    "rollup",
+    "scripts",
+    "utils"
+  ],
   "bugs": {
     "url": "https://github.com/scssyworks/rollup-scripts-utils/issues"
   },
