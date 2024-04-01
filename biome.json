@@ -8,13 +8,14 @@
     "rules": {
       "recommended": true
     },
-    "ignore": ["typings/**/*"]
+    "ignore": ["dist/**/*"]
   },
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
     "lineWidth": 80,
-    "indentWidth": 2
+    "indentWidth": 2,
+    "ignore": ["dist/**/*", "package.json", "tsconfig.json", "package-lock.json", "LICENSE", "README.md"]
   },
   "javascript": {
     "formatter": {

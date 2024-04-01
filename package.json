@@ -2,21 +2,19 @@
   "name": "rollup-scripts-utils",
   "version": "0.0.6",
   "description": "Utils for rollup-scripts and rollup-boilerplate",
-  "main": "index.js",
+  "main": "dist/index.js",
   "files": [
-    "lib",
-    "typings",
+    "dist",
     "README.md",
     "LICENSE",
-    "tsconfig.json",
-    "index.js"
+    "tsconfig.json"
   ],
-  "types": "./typings/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "format": "biome format ./ --write",
-    "generate:types": "tsc",
+    "build": "tsc",
     "lint": "biome lint ./",
-    "prepublishOnly": "npm run format && npm run lint"
+    "prepublishOnly": "npm run format && npm run lint && npm run build"
   },
   "author": "scssyworks",
   "license": "MIT",
