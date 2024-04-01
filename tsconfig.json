@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "declaration": true,
+    "outDir": "./typings",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
+    "emitDeclarationOnly": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "index.js",
+    "lib/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
