@@ -2,13 +2,17 @@ export class Logger {
   /**
    * Initializes a new instance of the class.
    *
-   * @param {{ silent?: boolean, verbose?: boolean, watch?: boolean }} args - Logger parameters:
+   * @param {{ silent?: boolean, verbose?: boolean, watch?: boolean }} [args] - Logger parameters:
    */
-  constructor(args: {
-    silent?: boolean | undefined;
-    verbose?: boolean | undefined;
-    watch?: boolean | undefined;
-  });
+  constructor(
+    args?:
+      | {
+          silent?: boolean | undefined;
+          verbose?: boolean | undefined;
+          watch?: boolean | undefined;
+        }
+      | undefined
+  );
   _silent: boolean;
   _verbose: boolean;
   _watch: boolean;

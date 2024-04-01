@@ -16,7 +16,7 @@
     "format": "biome format ./ --write",
     "generate:types": "tsc",
     "lint": "biome lint ./",
-    "prepublishOnly": "npm run format && npm run lint && npm run generate:types"
+    "prepublishOnly": "npm run generate:types && npm run format && npm run lint"
   },
   "author": "scssyworks",
   "license": "MIT",
