@@ -15,7 +15,15 @@
     "indentStyle": "space",
     "lineWidth": 80,
     "indentWidth": 2,
-    "ignore": ["dist/**/*", "package.json", "tsconfig.json", "package-lock.json", "LICENSE", "README.md"]
+    "ignore": [
+      "dist/**/*",
+      "package.json",
+      "tsconfig.json",
+      "package-lock.json",
+      "LICENSE",
+      "README.md",
+      "biome.json"
+    ]
   },
   "javascript": {
     "formatter": {
