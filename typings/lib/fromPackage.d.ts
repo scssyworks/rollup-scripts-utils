@@ -1,4 +1,11 @@
 /**
+ * Retrieves a resource from the specified file name.
+ *
+ * @param {string} fileName - The name of the file to retrieve the resource from.
+ * @return {any} The resource retrieved from the file, or null if the file cannot be found or loaded.
+ */
+export function getResource(fileName: string): any;
+/**
  * Retrieves a specific field from the package.json file.
  *
  * @param {string} field - The field to retrieve from the package.json file.

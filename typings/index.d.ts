@@ -46,6 +46,7 @@ declare const _exports: {
     timeEnd(id: string): void;
   };
   crossPath(path: string): string;
+  getResource: typeof import('./lib/fromPackage').getResource;
   fromPackage: typeof import('./lib/fromPackage').fromPackage;
   deps: typeof import('./lib/fromPackage').deps;
   resolvePath(p: string): string;
