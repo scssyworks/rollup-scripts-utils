@@ -4,7 +4,7 @@
  * @return {{[key: string]: string}} An object with environment variables as properties.
  */
 export function env(): {
-    [key: string]: string;
+  [key: string]: string;
 };
 /**
  * Returns the current working directory.
