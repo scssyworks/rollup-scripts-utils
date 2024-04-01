@@ -23,11 +23,15 @@ declare const _exports: {
       timeEnd(id: string): void;
     };
   };
-  getLogger(args: {
-    silent?: boolean | undefined;
-    verbose?: boolean | undefined;
-    watch?: boolean | undefined;
-  }): {
+  getLogger(
+    args?:
+      | {
+          silent?: boolean | undefined;
+          verbose?: boolean | undefined;
+          watch?: boolean | undefined;
+        }
+      | undefined
+  ): {
     _silent: boolean;
     _verbose: boolean;
     _watch: boolean;

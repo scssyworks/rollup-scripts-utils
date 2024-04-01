@@ -87,11 +87,15 @@ export class Logger {
 /**
  * Resolves logger instance.
  *
- * @param {{ silent?: boolean, verbose?: boolean, watch?: boolean }} args - Arguments
+ * @param {{ silent?: boolean, verbose?: boolean, watch?: boolean }} [args] - Arguments
  * @return {Logger} Logger instance
  */
-export declare function getLogger(args: {
-  silent?: boolean | undefined;
-  verbose?: boolean | undefined;
-  watch?: boolean | undefined;
-}): Logger;
+export declare function getLogger(
+  args?:
+    | {
+        silent?: boolean | undefined;
+        verbose?: boolean | undefined;
+        watch?: boolean | undefined;
+      }
+    | undefined
+): Logger;
