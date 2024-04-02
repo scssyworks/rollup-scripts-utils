@@ -1,6 +1,6 @@
 {
   "name": "rollup-scripts-utils",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Utils for rollup-scripts and rollup-boilerplate",
   "main": "dist/index.js",
   "files": [
