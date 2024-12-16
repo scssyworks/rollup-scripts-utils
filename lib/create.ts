@@ -1,16 +1,16 @@
-const { writeFile, mkdir, existsSync } = require('node:fs');
-const nodePath = require('node:path');
-const { crossPath } = require('./crossPath');
-const { cwd } = require('./env');
+import { writeFile, mkdir, existsSync } from 'node:fs';
+import nodePath from 'node:path';
+import { crossPath } from './crossPath.js';
+import { cwd } from './env.js';
 
-function toArray(input) {
+function toArray(input: string | string[]) {
   return Array.isArray(input) ? input : [input];
 }
 
-async function createFiles(paths, content, override = true) {
+export async function createFiles(paths: string | string[], content: string, override = true) {
   const pathArray = toArray(paths);
-  const folders = [];
-  const files = [];
+  const folders: string[] = [];
+  const files: string[] = [];
   for (const path of pathArray) {
     if (typeof path === 'string' && path.trim()) {
       let finalPath = crossPath(path);
@@ -30,9 +30,9 @@ async function createFiles(paths, content, override = true) {
     }
   }
   await createFolders(folders);
-  return Promise.all(
+  await Promise.all(
     files.map((file) => {
-      return new Promise((resolve, reject) => {
+      return new Promise<void>((resolve, reject) => {
         if (override || !existsSync(file)) {
           writeFile(file, content, (err) => {
             if (err) {
@@ -47,12 +47,12 @@ async function createFiles(paths, content, override = true) {
   );
 }
 
-async function createFolders(paths, override = true) {
+export async function createFolders(paths: string | string[], override = true) {
   const folderPaths = toArray(paths);
   if (folderPaths.length) {
-    return Promise.all(
+    await Promise.all(
       folderPaths.map((folder) => {
-        return new Promise((resolve, reject) => {
+        return new Promise<void>((resolve, reject) => {
           if (override || !existsSync(folder)) {
             mkdir(folder, { recursive: true }, (err) => {
               if (err) {
@@ -66,10 +66,4 @@ async function createFolders(paths, override = true) {
       })
     );
   }
-  return Promise.resolve();
 }
-
-module.exports = {
-  createFiles,
-  createFolders,
-};

@@ -3,6 +3,8 @@
   "version": "0.0.13",
   "description": "Utils for rollup-scripts and rollup-boilerplate",
   "main": "dist/index.js",
+  "module": "dist/index.js",
+  "type": "module",
   "files": [
     "dist",
     "README.md",
@@ -32,10 +34,11 @@
   },
   "homepage": "https://github.com/scssyworks/rollup-scripts-utils#readme",
   "devDependencies": {
-    "@biomejs/biome": "1.6.3",
-    "typescript": "^5.4.3"
+    "@biomejs/biome": "^1.9.4",
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
   },
   "dependencies": {
-    "chalk": "^4.1.2"
+    "chalk": "^5.3.0"
   }
 }
