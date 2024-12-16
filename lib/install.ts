@@ -1,18 +1,13 @@
-const childProcess = require('node:child_process');
-const { cwd } = require('./env');
+import childProcess from 'node:child_process';
+import { cwd } from './env.js';
 
 /**
  * Installs the specified dependencies with the given prefix and flag.
- *
- * @param {string[]} deps - An array of dependencies to install.
- * @param {boolean} isDev - A flag indicating whether the installation is for development purposes.
- * @param {string} prefix - The prefix to use for the installation.
- * @return {Promise<number>} A promise that resolves with the exit code of the installation process.
  */
-function install(deps, isDev, prefix) {
+export async function install(deps: string[], isDev: boolean, prefix: string) {
   if (deps?.length) {
     const npmProcess = `npm${/^win/.test(process.platform) ? '.cmd' : ''}`;
-    const suffixes = [];
+    const suffixes: string[] = [];
     if (prefix) {
       suffixes.push('--prefix', prefix);
     }
@@ -21,7 +16,7 @@ function install(deps, isDev, prefix) {
       suffixes.push('-D');
     }
     suffixes.push(...deps);
-    return new Promise((resolve, reject) => {
+    return new Promise<number>((resolve, reject) => {
       const npmi = childProcess.spawn(npmProcess, suffixes, {
         stdio: [0, 1, 2],
         cwd: cwd(),
@@ -35,8 +30,5 @@ function install(deps, isDev, prefix) {
       });
     });
   }
+  return Promise.resolve(0);
 }
-
-module.exports = {
-  install,
-};

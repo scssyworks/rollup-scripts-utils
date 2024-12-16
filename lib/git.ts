@@ -1,14 +1,12 @@
-const childProcess = require('node:child_process');
-const fs = require('node:fs');
-const { crossPath } = require('./crossPath');
-const { cwd } = require('./env');
+import childProcess from 'node:child_process';
+import fs from 'node:fs';
+import { crossPath } from './crossPath.js';
+import { cwd } from './env.js';
 
 /**
  * Generate the Git URL by executing a Git command.
- *
- * @return {Promise<string>} The Git URL.
  */
-async function gitURL() {
+export async function gitURL() {
   let gitURL = '';
   try {
     gitURL = await new Promise((resolve, reject) => {
@@ -32,7 +30,3 @@ async function gitURL() {
   }
   return gitURL;
 }
-
-module.exports = {
-  gitURL,
-};

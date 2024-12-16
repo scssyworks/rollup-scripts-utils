@@ -1,12 +1,19 @@
-const chalk = require('chalk');
+import chalk from 'chalk';
 
-class Logger {
+export type LoggerArgs = {
+  silent?: boolean;
+  verbose?: boolean;
+  watch?: boolean;
+};
+
+export class Logger {
+  private _silent: boolean;
+  private _verbose: boolean;
+  private _watch: boolean;
   /**
    * Initializes a new instance of the class.
-   *
-   * @param {{ silent?: boolean, verbose?: boolean, watch?: boolean }} [args] - Logger parameters:
    */
-  constructor(args) {
+  constructor(args: LoggerArgs) {
     const { silent, verbose, watch } = args ?? {};
     if (silent && verbose) {
       console.log(
@@ -25,11 +32,8 @@ class Logger {
   /**
    * Prints the given text to the console if the silent flag is not set.
    * If an additional info parameter is provided, it is appended to the text.
-   *
-   * @param {string} text - The text to be printed.
-   * @param {string} [info] - Additional information to be appended to the text.
    */
-  print(text, info) {
+  print(text: string, info?: string) {
     if (!this._silent) {
       const logs = [chalk.bold(text)];
       if (info) {
@@ -40,94 +44,62 @@ class Logger {
   }
   /**
    * Logs the given text with blue color using chalk library and prints the additional information if provided.
-   *
-   * @param {string} text - The text to be logged.
-   * @param {string} [info] - Additional information to be printed.
-   * @return {void} This function does not return any value.
    */
-  log(text, info) {
+  log(text: string, info?: string) {
     this.print(chalk.blue(text), info);
   }
   /**
    * A function that logs an error message with red color and prints the additional information if provided.
-   *
-   * @param {string} text - the error message to be displayed
-   * @param {string} [info] - additional information related to the error
-   * @return {void} This function does not return any value.
    */
-  error(text, info) {
+  error(text: string, info?: string) {
     this.print(chalk.red(text), info);
   }
   /**
    * Prints the given text in green color to the console, along with any additional information provided.
-   *
-   * @param {string} text - The text to be printed in green color.
-   * @param {string} [info] - Additional information to be printed along with the text.
-   * @return {void} This function does not return any value.
    */
-  success(text, info) {
+  success(text: string, info?: string) {
     this.print(chalk.green(text), info);
   }
   /**
    * Prints a warning message using the provided text and additional information.
-   *
-   * @param {string} text - The warning message to be printed.
-   * @param {string} [info] - Additional information to be printed along with the warning message.
-   * @return {void} This function does not return any value.
    */
-  warn(text, info) {
+  warn(text: string, info?: string) {
     this.print(chalk.yellow(text), info);
   }
   /**
    * Prints the given text in gray color, indicating that it is muted.
-   *
-   * @param {string} text - The text to be printed.
-   * @param {string} [info] - Additional information related to the text.
-   * @return {void} This function does not return a value.
    */
-  muted(text, info) {
+  muted(text: string, info?: string) {
     this.print(chalk.gray(text), info);
   }
   /**
    * A function that logs the given text if the "verbose" flag is set.
-   *
-   * @param {string} text - the text to be logged
    */
-  verbose(text) {
+  verbose(text: string) {
     if (this._verbose) {
       console.error(text);
     }
   }
   /**
    * A function that starts a timer and logs the time with a colored ID.
-   *
-   * @param {string} id - the ID used for logging
    */
-  timeStart(id) {
+  timeStart(id: string) {
     console.time(chalk.bold(this._watch ? chalk.green(id) : chalk.blue(id)));
   }
   /**
    * Ends a timer and logs the elapsed time.
-   *
-   * @param {string} id - The identifier of the timer to end.
-   * @return {void} This function does not return a value.
    */
-  timeEnd(id) {
+  timeEnd(id: string) {
     console.timeEnd(chalk.bold(this._watch ? chalk.green(id) : chalk.blue(id)));
   }
 }
 
 const resolver = (function resolveLogger() {
-  /**
-   * @type Logger
-   */
-  let logger;
+  let logger: Logger;
   /**
    * Resolves logger instance
-   * @param {{ silent?: boolean, verbose?: boolean, watch?: boolean }} [args] Arguments
-   * @returns {Logger} Logger instance
    */
-  return (args) => {
+  return (args: LoggerArgs) => {
     if (logger) {
       return logger;
     }
@@ -138,15 +110,7 @@ const resolver = (function resolveLogger() {
 
 /**
  * Resolves logger instance.
- *
- * @param {{ silent?: boolean, verbose?: boolean, watch?: boolean }} [args] - Arguments
- * @return {Logger} Logger instance
  */
-function getLogger(args) {
+export function getLogger(args: LoggerArgs) {
   return resolver(args);
 }
-
-module.exports = {
-  Logger,
-  getLogger,
-};
