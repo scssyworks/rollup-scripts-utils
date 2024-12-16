@@ -7,7 +7,11 @@ function toArray(input: string | string[]) {
   return Array.isArray(input) ? input : [input];
 }
 
-export async function createFiles(paths: string | string[], content: string, override = true) {
+export async function createFiles(
+  paths: string | string[],
+  content: string,
+  override = true
+) {
   const pathArray = toArray(paths);
   const folders: string[] = [];
   const files: string[] = [];

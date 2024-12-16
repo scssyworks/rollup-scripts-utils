@@ -6,7 +6,9 @@ import { resolvePath } from './resolvePath.js';
  */
 export function fromPackage(field: string) {
   try {
-    const packageJson = fs.readFileSync(resolvePath('package.json'), { encoding: 'utf-8' });
+    const packageJson = fs.readFileSync(resolvePath('package.json'), {
+      encoding: 'utf-8',
+    });
     const pkg = JSON.parse(packageJson);
     return pkg?.[field] ?? null;
   } catch (e) {
